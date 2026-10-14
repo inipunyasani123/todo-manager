@@ -3,10 +3,10 @@ import "./globals.css";
 
 const dmsans = DM_Sans({ subsets: ["latin"], variable: "--font-dmsans", display: "swap" });
 
-const __jsonld = {"@context":"https://schema.org","@type":"WebApplication","name":"Tuntas","description":"Pengelola tugas lengkap: prioritas, tenggat dengan label relatif, label yang bisa diganti nama sekaligus, kalender bulanan, dan saringan cepat untuk tugas hari ini atau yang terlambat.","url":"https://todo-manager-ivory-seven.vercel.app","applicationCategory":"ProductivityApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"IDR"}};
+const __jsonld = {"@context":"https://schema.org","@type":"WebApplication","name":"Tuntas","description":"Pengelola tugas lengkap: prioritas, tenggat dengan label relatif, label yang bisa diganti nama sekaligus, kalender bulanan, dan saringan cepat untuk tugas hari ini atau yang terlambat.","url":"https://todo-manager.pintuweb.id","applicationCategory":"ProductivityApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"IDR"}};
 
 export const metadata = {
-  metadataBase: new URL("https://todo-manager-ivory-seven.vercel.app"),
+  metadataBase: new URL("https://todo-manager.pintuweb.id"),
   title: { default: "Tuntas — Pengelola tugas dengan kalender", template: "%s — Tuntas" },
   description: "Pengelola tugas lengkap: prioritas, tenggat dengan label relatif, label yang bisa diganti nama sekaligus, kalender bulanan, dan saringan cepat untuk tugas hari ini atau yang terlambat.",
   applicationName: "Tuntas",
@@ -14,11 +14,11 @@ export const metadata = {
   authors: [{ name: "Tuntas" }],
   creator: "Tuntas",
   publisher: "Tuntas",
-  alternates: { canonical: "https://todo-manager-ivory-seven.vercel.app" },
+  alternates: { canonical: "https://todo-manager.pintuweb.id" },
   openGraph: {
     type: "website",
     locale: "id_ID",
-    url: "https://todo-manager-ivory-seven.vercel.app",
+    url: "https://todo-manager.pintuweb.id",
     siteName: "Tuntas",
     title: "Tuntas — Pengelola tugas dengan kalender",
     description: "Pengelola tugas lengkap: prioritas, tenggat dengan label relatif, label yang bisa diganti nama sekaligus, kalender bulanan, dan saringan cepat untuk tugas hari ini atau yang terlambat.",

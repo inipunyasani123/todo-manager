@@ -2,7 +2,7 @@
 
 Pengelola tugas lengkap untuk urusan kerja dan rumah: prioritas, tenggat, label, dan kalender. Sapaan mengikuti jam WIB dan nama panggilan yang bisa diatur.
 
-**Demo live:** https://todo-manager-ivory-seven.vercel.app
+**Demo live:** https://todo-manager.pintuweb.id
 
 ![Tangkapan layar](public/og.jpg)
 

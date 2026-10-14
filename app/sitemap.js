@@ -1,4 +1,4 @@
-const URL = 'https://todo-manager-ivory-seven.vercel.app';
+const URL = 'https://todo-manager.pintuweb.id';
 
 export default function sitemap() {
   const now = new Date();
