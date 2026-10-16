@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Pencil, Trash2, Check, X } from 'lucide-react';
 import { useLocalStorage } from '@/lib/useLocalStorage';
 import { KUNCI, contoh } from '@/lib/taskUtils';
+import { LabelKosong } from './Ilustrasi';
 
 // Daftar label beserta jumlah tugas; ganti nama atau hapus label di semua tugas sekaligus.
 export default function KelolaLabel() {
@@ -25,7 +26,7 @@ export default function KelolaLabel() {
   };
   const hapus = (g) => { if (window.confirm(`Lepas label #${g} dari semua tugas? Tugasnya tidak ikut terhapus.`)) setTasks((p) => p.map((t) => ({ ...t, tags: (t.tags || []).filter((x) => x !== g) }))); };
 
-  if (!label.length) return <p className="rounded-2xl border border-dashed border-outline-variant p-10 text-center text-on-surface-variant">Belum ada label. Tambahkan label saat membuat atau mengubah tugas.</p>;
+  if (!label.length) return <div className="rounded-2xl border border-dashed border-outline-variant p-10 text-center text-on-surface-variant"><LabelKosong /><p>Belum ada label. Tambahkan label saat membuat atau mengubah tugas.</p></div>;
 
   return (
     <ul className="divide-y divide-outline-variant/60 rounded-2xl border border-outline-variant bg-surface-container-lowest">

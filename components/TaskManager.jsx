@@ -9,6 +9,7 @@ import { KUNCI, KUNCI_NAMA, PRIORITIES, PRIORITY_KEYS, isOverdue, isDueToday, co
 import TopBar from './TopBar';
 import TaskCard from './TaskCard';
 import TaskModal from './TaskModal';
+import { SemuaTuntas, BelumSelesai, TakCocok } from './Ilustrasi';
 
 const STATUS = [
   { key: 'all', label: 'Semua' },
@@ -157,8 +158,10 @@ export default function TaskManager() {
         {!loaded || tasks === null ? (
           <p className="py-12 text-center text-sm text-on-surface-variant">Memuat…</p>
         ) : visible.length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-outline-variant py-16 text-center text-on-surface-variant">
-            {ada ? 'Tidak ada tugas yang cocok dengan saringan.' : status === 'done' ? 'Belum ada tugas yang selesai.' : 'Semua tuntas. Tambah tugas baru dengan tombol +.'}
+          <div className="rounded-2xl border border-dashed border-outline-variant px-6 py-10 text-center text-on-surface-variant md:py-16">
+            {ada ? <TakCocok /> : status === 'done' ? <BelumSelesai /> : <SemuaTuntas />}
+            {/* Lebar teks dibatasi di ponsel supaya tidak tertutup tombol + yang melayang di kanan bawah. */}
+            <p className="mx-auto max-w-56 md:max-w-none">{ada ? 'Tidak ada tugas yang cocok dengan saringan.' : status === 'done' ? 'Belum ada tugas yang selesai.' : 'Semua tuntas. Tambah tugas baru dengan tombol +.'}</p>
           </div>
         ) : (
           <ul className="space-y-2.5">
