@@ -98,11 +98,11 @@ export default function TaskManager() {
 
       <main className="mx-auto w-full max-w-4xl px-4 pb-28 pt-6">
         <section className="mb-6">
-          <p className="text-sm text-on-surface-variant">{hari ? fmtTanggal(hari, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) : ' '}</p>
+          <p className="text-sm text-on-surface-variant">{hari ? fmtTanggal(hari, { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) : '\u00a0'}</p>
           {ubahNama ? (
             <form className="mt-1 flex items-center gap-2" onSubmit={(e) => { e.preventDefault(); setUbahNama(false); }}>
               <label className="flex-1"><span className="sr-only">Nama panggilan</span>
-                <input autoFocus value={nama} onChange={(e) => setNama(e.target.value.slice(0, 24))} placeholder="Nama panggilan" className="w-full max-w-xs rounded-lg border border-primary bg-surface-container-lowest px-3 py-2 text-xl font-bold text-on-surface outline-none" />
+                <input autoFocus value={nama} onChange={(e) => setNama(e.target.value.slice(0, 24))} placeholder="Nama panggilan" aria-label="Nama panggilan" className="w-full max-w-xs rounded-lg border border-primary bg-surface-container-lowest px-3 py-2 text-xl font-bold text-on-surface outline-none" />
               </label>
               <button type="submit" className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-on-primary">Simpan</button>
             </form>
@@ -151,6 +151,9 @@ export default function TaskManager() {
         </section>
 
         <h2 className="sr-only">Daftar tugas</h2>
+        {/* Ruang daftar dipesan sejak HTML pertama: data datang dari localStorage setelah hidrasi, jadi tanpa ini
+            bilah demo & isi bawah ikut tergeser (CLS). */}
+        <div className="min-h-[60vh]">
         {!loaded || tasks === null ? (
           <p className="py-12 text-center text-sm text-on-surface-variant">Memuat…</p>
         ) : visible.length === 0 ? (
@@ -164,6 +167,7 @@ export default function TaskManager() {
             ))}
           </ul>
         )}
+        </div>
       </main>
 
       <button type="button" onClick={openAdd} aria-label="Tambah tugas"

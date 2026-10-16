@@ -13,8 +13,8 @@ export default function TaskCard({ task, hari, onToggle, onEdit, onRemove, onTag
     <li className={`card-shadow group rounded-xl border bg-surface-container-lowest p-4 transition hover:bg-surface-container-low ${overdue ? 'border-error/40' : 'border-outline-variant'}`}>
       <div className="flex items-start gap-3.5">
         <button type="button" onClick={() => onToggle(task.id)} role="checkbox" aria-checked={task.done} aria-label={`${task.done ? 'Batalkan selesai' : 'Tandai selesai'}: ${task.title}`}
-          className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-[5px] border-[1.5px] transition ${task.done ? 'border-primary bg-primary text-on-primary' : 'border-outline text-transparent hover:border-primary'}`}>
-          <Check size={13} strokeWidth={3} aria-hidden="true" />
+          className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-md border-[1.5px] transition ${task.done ? 'border-primary bg-primary text-on-primary' : 'border-outline text-transparent hover:border-primary'}`}>
+          <Check size={14} strokeWidth={3} aria-hidden="true" />
         </button>
 
         <div className="min-w-0 flex-1">
@@ -33,7 +33,7 @@ export default function TaskCard({ task, hari, onToggle, onEdit, onRemove, onTag
             )}
             {task.tags?.map((t) => (
               <button key={t} type="button" onClick={() => onTagClick?.(t)} aria-label={`Saring label ${t}`}
-                className="rounded bg-surface-container px-2 py-0.5 text-[11px] font-semibold text-on-surface-variant transition hover:text-primary">#{t}</button>
+                className="inline-flex min-h-6 items-center rounded bg-surface-container px-2 text-[11px] font-semibold text-on-surface-variant transition hover:text-primary">#{t}</button>
             ))}
           </div>
         </div>

@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { X, Plus, Flag, Tag, Save } from 'lucide-react';
 import { PRIORITY_KEYS, PRIORITIES } from '@/lib/taskUtils';
 import { tambahHari } from '@/lib/waktu';
+import { useDialog } from '@/lib/useDialog';
 
 const empty = { title: '', notes: '', priority: 'medium', dueDate: '', tags: [] };
 
@@ -17,6 +18,9 @@ export default function TaskModal({ open, task, hari, onClose, onSave }) {
   const [form, setForm] = useState(empty);
   const [tagInput, setTagInput] = useState('');
   const titleRef = useRef(null);
+  const dialogRef = useRef(null);
+  // Fokus terkurung di dialog; saat ditutup kembali ke tombol pemicu (FAB atau tombol ubah), atau ke FAB.
+  useDialog(open, dialogRef, () => document.querySelector('button[aria-label="Tambah tugas"]'));
 
   useEffect(() => {
     if (open) {
@@ -57,6 +61,7 @@ export default function TaskModal({ open, task, hari, onClose, onSave }) {
     >
       <div
         className="flex max-h-[92vh] w-full max-w-lg flex-col overflow-hidden rounded-t-3xl bg-surface shadow-2xl sm:rounded-3xl"
+        ref={dialogRef}
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-modal="true"
@@ -69,8 +74,8 @@ export default function TaskModal({ open, task, hari, onClose, onSave }) {
 
         <div className="flex items-center justify-between border-b border-outline-variant/30 px-6 py-4">
           <h2 id="judul-modal" className="text-lg font-semibold text-on-surface">{task ? 'Ubah tugas' : 'Tugas baru'}</h2>
-          <button type="button" onClick={onClose} aria-label="Tutup" className="rounded-full p-1.5 text-on-surface-variant hover:bg-surface-container-low">
-            <X size={18} />
+          <button type="button" onClick={onClose} aria-label="Tutup" className="grid h-10 w-10 place-items-center rounded-full text-on-surface-variant hover:bg-surface-container-low">
+            <X size={18} aria-hidden="true" />
           </button>
         </div>
 
@@ -129,8 +134,8 @@ export default function TaskModal({ open, task, hari, onClose, onSave }) {
               {form.tags.map((t) => (
                 <span key={t} className="inline-flex items-center gap-1 rounded-md bg-surface-container-high px-2.5 py-1 text-xs font-medium text-on-surface">
                   <Tag size={12} className="text-on-surface-variant" aria-hidden="true" /> {t}
-                  <button type="button" onClick={() => removeTag(t)} aria-label={`Hapus label ${t}`} className="ml-0.5 text-on-surface-variant hover:text-error">
-                    <X size={12} />
+                  <button type="button" onClick={() => removeTag(t)} aria-label={`Hapus label ${t}`} className="-my-1 -mr-1.5 ml-0.5 grid h-6 w-6 place-items-center rounded text-on-surface-variant hover:text-error">
+                    <X size={12} aria-hidden="true" />
                   </button>
                 </span>
               ))}

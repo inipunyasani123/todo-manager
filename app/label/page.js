@@ -1,11 +1,8 @@
 import TopBar from '@/components/TopBar';
 import KelolaLabel from '@/components/KelolaLabel';
+import { pageMeta } from '@/lib/seo';
 
-export const metadata = {
-  title: 'Label',
-  description: 'Kelola label tugas di Tuntas: lihat jumlah tugas per label, ganti nama, atau lepas label dari semua tugas sekaligus.',
-  alternates: { canonical: '/label' },
-};
+export const metadata = pageMeta({ title: 'Label', description: "Kelola label tugas di Tuntas: lihat jumlah tugas per label, ganti nama, atau lepas label dari semua tugas sekaligus.", path: '/label' });
 
 export default function LabelPage() {
   return (

@@ -11,7 +11,7 @@ export default function KelolaLabel() {
   const [ubah, setUbah] = useState(null);
   const [nama, setNama] = useState('');
   useEffect(() => { if (loaded && tasks === null) setTasks(contoh()); }, [loaded, tasks, setTasks]);
-  if (!loaded || tasks === null) return <p className="py-16 text-center text-sm text-on-surface-variant">Memuat…</p>;
+  if (!loaded || tasks === null) return <p className="min-h-[60vh] py-16 text-center text-sm text-on-surface-variant">Memuat…</p>;
 
   const label = Object.values(tasks.reduce((a, t) => {
     (t.tags || []).forEach((g) => { a[g] ||= { nama: g, aktif: 0, selesai: 0 }; a[g][t.done ? 'selesai' : 'aktif']++; });

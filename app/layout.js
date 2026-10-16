@@ -1,35 +1,20 @@
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
+import { SITE_URL, SITE_NAME, SITE_TITLE, SITE_DESC, pageMeta } from "@/lib/seo";
 
 const dmsans = DM_Sans({ subsets: ["latin"], variable: "--font-dmsans", display: "swap" });
 
-const __jsonld = {"@context":"https://schema.org","@type":"WebApplication","name":"Tuntas","description":"Pengelola tugas lengkap: prioritas, tenggat dengan label relatif, label yang bisa diganti nama sekaligus, kalender bulanan, dan saringan cepat untuk tugas hari ini atau yang terlambat.","url":"https://todo-manager.pintuweb.id","applicationCategory":"ProductivityApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"IDR"}};
+const __jsonld = {"@context":"https://schema.org","@type":"WebApplication","name":"Tuntas","description":"Pengelola tugas dengan prioritas, tenggat berlabel relatif, label yang bisa diganti nama sekaligus, kalender bulanan, dan saringan tugas yang terlambat.","url":"https://todo-manager.pintuweb.id","applicationCategory":"ProductivityApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"IDR"}};
 
 export const metadata = {
-  metadataBase: new URL("https://todo-manager.pintuweb.id"),
-  title: { default: "Tuntas — Pengelola tugas dengan kalender", template: "%s — Tuntas" },
-  description: "Pengelola tugas lengkap: prioritas, tenggat dengan label relatif, label yang bisa diganti nama sekaligus, kalender bulanan, dan saringan cepat untuk tugas hari ini atau yang terlambat.",
-  applicationName: "Tuntas",
+  metadataBase: new URL(SITE_URL),
+  title: { default: SITE_TITLE, template: `%s — ${SITE_NAME}` },
+  applicationName: SITE_NAME,
   keywords: ["task manager", "manajemen tugas", "produktivitas", "to-do", "pengelola tugas"],
-  authors: [{ name: "Tuntas" }],
-  creator: "Tuntas",
-  publisher: "Tuntas",
-  alternates: { canonical: "https://todo-manager.pintuweb.id" },
-  openGraph: {
-    type: "website",
-    locale: "id_ID",
-    url: "https://todo-manager.pintuweb.id",
-    siteName: "Tuntas",
-    title: "Tuntas — Pengelola tugas dengan kalender",
-    description: "Pengelola tugas lengkap: prioritas, tenggat dengan label relatif, label yang bisa diganti nama sekaligus, kalender bulanan, dan saringan cepat untuk tugas hari ini atau yang terlambat.",
-    images: [{ url: "/og.jpg", width: 1200, height: 630, alt: "Tuntas — Pengelola tugas dengan kalender" }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Tuntas — Pengelola tugas dengan kalender",
-    description: "Pengelola tugas lengkap: prioritas, tenggat dengan label relatif, label yang bisa diganti nama sekaligus, kalender bulanan, dan saringan cepat untuk tugas hari ini atau yang terlambat.",
-    images: ["/og.jpg"],
-  },
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  ...pageMeta({ description: SITE_DESC, path: '/' }),
   robots: {
     index: true,
     follow: true,

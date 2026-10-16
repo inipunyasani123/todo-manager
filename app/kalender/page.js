@@ -1,11 +1,8 @@
 import TopBar from '@/components/TopBar';
 import Kalender from '@/components/Kalender';
+import { pageMeta } from '@/lib/seo';
 
-export const metadata = {
-  title: 'Kalender',
-  description: 'Lihat tugas Tuntas di kalender bulanan menurut tanggal jatuh temponya, dan centang langsung dari daftar per hari.',
-  alternates: { canonical: '/kalender' },
-};
+export const metadata = pageMeta({ title: 'Kalender', description: "Lihat tugas Tuntas di kalender bulanan menurut tanggal jatuh temponya, dan centang langsung dari daftar per hari.", path: '/kalender' });
 
 export default function KalenderPage() {
   return (

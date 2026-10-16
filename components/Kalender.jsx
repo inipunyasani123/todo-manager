@@ -25,7 +25,7 @@ export default function Kalender() {
     return Array.from({ length: 42 }, (_, i) => isoTanggal(new Date(bulan.y, bulan.m, 1 - geser + i)));
   }, [bulan]);
 
-  if (!loaded || !hari || !bulan || tasks === null) return <p className="py-16 text-center text-sm text-on-surface-variant">Memuat…</p>;
+  if (!loaded || !hari || !bulan || tasks === null) return <p className="min-h-[60vh] py-16 text-center text-sm text-on-surface-variant">Memuat…</p>;
 
   const pada = (d) => tasks.filter((t) => t.dueDate === d);
   const tanpa = tasks.filter((t) => !t.dueDate && !t.done).length;
@@ -74,12 +74,14 @@ export default function Kalender() {
         {daftar.length === 0 ? <p className="mt-3 text-sm text-on-surface-variant">Tidak ada tugas jatuh tempo.</p> : (
           <ul className="mt-3 space-y-2">
             {daftar.map((t) => (
-              <li key={t.id} className="flex items-start gap-3 rounded-lg border border-outline-variant/60 p-3">
-                <input type="checkbox" checked={t.done} onChange={() => toggle(t.id)} aria-label={`Selesai: ${t.title}`} className="mt-1 h-4 w-4 accent-primary" />
+              <li key={t.id}>
+                <label className="flex cursor-pointer items-start gap-3 rounded-lg border border-outline-variant/60 p-3 transition hover:border-primary">
+                <input type="checkbox" checked={t.done} onChange={() => toggle(t.id)} aria-label={`Selesai: ${t.title}`} className="h-6 w-6 shrink-0 accent-primary" />
                 <span className="min-w-0">
                   <span className={`block font-semibold ${t.done ? 'text-on-surface-variant line-through' : 'text-on-surface'}`}>{t.title}</span>
                   <span className="text-xs text-on-surface-variant">{PRIORITIES[t.priority]?.label}{t.tags?.length ? ` · ${t.tags.map((x) => '#' + x).join(' ')}` : ''}</span>
                 </span>
+                </label>
               </li>
             ))}
           </ul>
