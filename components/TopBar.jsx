@@ -25,7 +25,7 @@ export default function TopBar({ query, onQuery }) {
     <header className="sticky top-0 z-40 border-b border-outline-variant/50 bg-surface/90 backdrop-blur-xl">
       <div className="mx-auto flex w-full max-w-4xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-4 py-3">
         <div className="flex items-center gap-3 sm:gap-4">
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex min-h-11 items-center gap-2">
             <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-container text-on-primary" aria-hidden="true"><ClipboardCheck size={18} /></span>
             <span className="text-xl font-bold tracking-tight text-primary">Tuntas</span>
           </Link>
@@ -34,7 +34,7 @@ export default function TopBar({ query, onQuery }) {
               const aktif = n.href === '/' ? path === '/' : path?.startsWith(n.href);
               return (
                 <Link key={n.href} href={n.href} aria-current={aktif ? 'page' : undefined}
-                  className={`rounded-lg px-2.5 py-1.5 transition sm:px-3 ${aktif ? 'bg-primary text-on-primary' : 'text-on-surface-variant hover:bg-surface-container-high'}`}>
+                  className={`flex min-h-11 items-center rounded-lg px-2.5 transition sm:px-3 ${aktif ? 'bg-primary text-on-primary' : 'text-on-surface-variant hover:bg-surface-container-high'}`}>
                   {n.label}
                 </Link>
               );
@@ -46,10 +46,10 @@ export default function TopBar({ query, onQuery }) {
             <div className="relative">
               <Search size={16} className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-outline" aria-hidden="true" />
               <input value={query} onChange={(e) => onQuery(e.target.value)} placeholder="Cari tugas…" aria-label="Cari tugas atau label"
-                className="w-36 rounded-full border border-outline-variant/60 bg-surface-container-lowest py-2 pl-9 pr-4 text-sm text-on-surface outline-none transition-all focus:w-48 focus:border-primary focus-visible:ring-2 focus-visible:ring-primary/40 sm:w-56 sm:focus:w-64" />
+                className="w-36 rounded-full border border-outline-variant/60 bg-surface-container-lowest min-h-11 py-2 pl-9 pr-4 text-sm text-on-surface outline-none transition-all focus:w-48 focus:border-primary focus-visible:ring-2 focus-visible:ring-primary/40 sm:w-56 sm:focus:w-64" />
             </div>
           )}
-          <button type="button" onClick={toggleTheme} aria-label={dark ? 'Pakai mode terang' : 'Pakai mode gelap'} className="grid h-10 w-10 place-items-center rounded-full text-on-surface-variant transition-colors hover:bg-surface-container-high">
+          <button type="button" onClick={toggleTheme} aria-label={dark ? 'Pakai mode terang' : 'Pakai mode gelap'} className="grid h-11 w-11 place-items-center rounded-full text-on-surface-variant transition-colors hover:bg-surface-container-high">
             {dark ? <Sun size={20} /> : <Moon size={20} />}
           </button>
         </div>

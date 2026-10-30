@@ -26,7 +26,7 @@ function StatCard({ icon: Icon, label, value, accent, highlight, onClick, aktif 
   return (
     <button type="button" onClick={onClick} aria-pressed={aktif}
       className={`relative h-24 overflow-hidden rounded-xl border p-4 text-left transition hover:-translate-y-0.5 ${aktif ? 'ring-2 ring-primary' : ''} ${highlight ? 'border-error/30 bg-error-container' : 'border-outline-variant bg-surface-container-lowest'}`}>
-      <span className={`relative flex items-center gap-2 ${accent}`}><Icon size={17} aria-hidden="true" /><span className="text-[13px] font-semibold">{label}</span></span>
+      <span className={`relative flex items-center gap-2 ${accent}`}><Icon size={17} aria-hidden="true" /><span className="text-sm font-semibold">{label}</span></span>
       <span className={`relative mt-2 block text-2xl font-bold ${highlight ? 'text-on-error-container' : 'text-on-surface'}`}>{value}</span>
     </button>
   );
@@ -90,7 +90,7 @@ export default function TaskManager() {
   const remove = (id) => { const t = semua.find((x) => x.id === id); if (window.confirm(`Hapus "${t?.title}"?`)) setTasks((p) => p.filter((x) => x.id !== id)); };
   const pilihCepat = (k) => { setCepat((c) => (c === k ? null : k)); setStatus('active'); };
 
-  const select = 'rounded-lg border border-outline-variant bg-surface-container-lowest px-3 py-2 text-sm text-on-surface outline-none focus:border-primary';
+  const select = 'min-h-11 rounded-lg border border-outline-variant bg-surface-container-lowest px-3 py-2 text-sm text-on-surface outline-none focus:border-primary';
   const ada = cepat || priority !== 'all' || tagFilter || search.trim();
 
   return (
@@ -105,12 +105,12 @@ export default function TaskManager() {
               <label className="flex-1"><span className="sr-only">Nama panggilan</span>
                 <input autoFocus value={nama} onChange={(e) => setNama(e.target.value.slice(0, 24))} placeholder="Nama panggilan" aria-label="Nama panggilan" className="w-full max-w-xs rounded-lg border border-primary bg-surface-container-lowest px-3 py-2 text-xl font-bold text-on-surface outline-none" />
               </label>
-              <button type="submit" className="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-on-primary">Simpan</button>
+              <button type="submit" className="min-h-11 rounded-lg bg-primary px-4 text-sm font-semibold text-on-primary">Simpan</button>
             </form>
           ) : (
             <h1 className="mt-1 flex flex-wrap items-center gap-2 text-3xl font-bold tracking-tight text-on-surface">
               {sekarang ? sapaan(sekarang) : 'Halo'}{nama ? `, ${nama}` : ''}.
-              <button type="button" onClick={() => setUbahNama(true)} aria-label="Atur nama panggilan" className="rounded-lg p-1.5 text-on-surface-variant hover:bg-surface-container-high hover:text-primary"><Pencil size={16} /></button>
+              <button type="button" onClick={() => setUbahNama(true)} aria-label="Atur nama panggilan" className="grid h-11 w-11 place-items-center rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-primary"><Pencil size={16} /></button>
             </h1>
           )}
           <p className="mt-1 text-sm text-on-surface-variant">
@@ -130,7 +130,7 @@ export default function TaskManager() {
             <div className="flex gap-1 rounded-lg border border-outline-variant bg-surface-container-low p-1" role="group" aria-label="Status">
               {STATUS.map((s) => (
                 <button key={s.key} type="button" onClick={() => { setStatus(s.key); setCepat(null); }} aria-pressed={status === s.key}
-                  className={`rounded-md px-3 py-1.5 text-sm font-medium transition ${status === s.key ? 'bg-surface-container-lowest text-primary shadow-sm' : 'text-on-surface-variant hover:text-on-surface'}`}>
+                  className={`min-h-11 rounded-md px-3 text-sm font-medium transition ${status === s.key ? 'bg-surface-container-lowest text-primary shadow-sm' : 'text-on-surface-variant hover:text-on-surface'}`}>
                   {s.label}
                 </button>
               ))}
@@ -145,8 +145,8 @@ export default function TaskManager() {
           </div>
           {(tagFilter || cepat) && (
             <div className="mt-2 flex flex-wrap gap-2">
-              {tagFilter && <button type="button" onClick={() => setTagFilter(null)} className="inline-flex items-center gap-1.5 rounded-full bg-primary-container/15 px-3 py-1 text-sm font-medium text-primary">Label: #{tagFilter} <X size={13} aria-hidden="true" /><span className="sr-only">hapus saringan</span></button>}
-              {cepat && <button type="button" onClick={() => setCepat(null)} className="inline-flex items-center gap-1.5 rounded-full bg-primary-container/15 px-3 py-1 text-sm font-medium text-primary">{cepat === 'today' ? 'Jatuh tempo hari ini' : 'Terlambat'} <X size={13} aria-hidden="true" /><span className="sr-only">hapus saringan</span></button>}
+              {tagFilter && <button type="button" onClick={() => setTagFilter(null)} className="inline-flex items-center gap-1.5 inline-flex min-h-11 items-center rounded-full bg-primary-container/15 px-3 text-sm font-medium text-primary">Label: #{tagFilter} <X size={13} aria-hidden="true" /><span className="sr-only">hapus saringan</span></button>}
+              {cepat && <button type="button" onClick={() => setCepat(null)} className="inline-flex items-center gap-1.5 inline-flex min-h-11 items-center rounded-full bg-primary-container/15 px-3 text-sm font-medium text-primary">{cepat === 'today' ? 'Jatuh tempo hari ini' : 'Terlambat'} <X size={13} aria-hidden="true" /><span className="sr-only">hapus saringan</span></button>}
             </div>
           )}
         </section>

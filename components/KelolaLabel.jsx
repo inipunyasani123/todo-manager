@@ -37,16 +37,16 @@ export default function KelolaLabel() {
               <label className="flex-1"><span className="sr-only">Nama baru untuk #{g.nama}</span>
                 <input autoFocus value={nama} onChange={(e) => setNama(e.target.value)} className="w-full rounded-lg border border-primary bg-surface px-3 py-1.5 text-sm text-on-surface outline-none" />
               </label>
-              <button type="submit" aria-label="Simpan nama label" className="rounded-lg p-1.5 text-primary hover:bg-surface-container-high"><Check size={16} /></button>
-              <button type="button" onClick={() => setUbah(null)} aria-label="Batal" className="rounded-lg p-1.5 text-on-surface-variant hover:bg-surface-container-high"><X size={16} /></button>
+              <button type="submit" aria-label="Simpan nama label" className="grid h-11 w-11 place-items-center rounded-lg text-primary hover:bg-surface-container-high"><Check size={16} /></button>
+              <button type="button" onClick={() => setUbah(null)} aria-label="Batal" className="grid h-11 w-11 place-items-center rounded-lg text-on-surface-variant hover:bg-surface-container-high"><X size={16} /></button>
             </form>
           ) : (
             <>
-              <Link href={`/?label=${encodeURIComponent(g.nama)}`} className="font-semibold text-on-surface underline-offset-4 hover:text-primary hover:underline">#{g.nama}</Link>
+              <Link href={`/?label=${encodeURIComponent(g.nama)}`} className="inline-flex min-h-11 items-center font-semibold text-on-surface underline-offset-4 hover:text-primary hover:underline">#{g.nama}</Link>
               <span className="ml-auto text-sm text-on-surface-variant">{g.aktif} aktif · {g.selesai} selesai</span>
               <div className="flex gap-1">
-                <button type="button" onClick={() => { setUbah(g.nama); setNama(g.nama); }} aria-label={`Ganti nama #${g.nama}`} className="rounded-lg p-1.5 text-on-surface-variant hover:bg-surface-container-high hover:text-primary"><Pencil size={15} /></button>
-                <button type="button" onClick={() => hapus(g.nama)} aria-label={`Lepas label #${g.nama}`} className="rounded-lg p-1.5 text-on-surface-variant hover:text-error"><Trash2 size={15} /></button>
+                <button type="button" onClick={() => { setUbah(g.nama); setNama(g.nama); }} aria-label={`Ganti nama #${g.nama}`} className="grid h-11 w-11 place-items-center rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-primary"><Pencil size={15} /></button>
+                <button type="button" onClick={() => hapus(g.nama)} aria-label={`Lepas label #${g.nama}`} className="grid h-11 w-11 place-items-center rounded-lg text-on-surface-variant hover:text-error"><Trash2 size={15} /></button>
               </div>
             </>
           )}

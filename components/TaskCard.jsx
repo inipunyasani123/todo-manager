@@ -13,7 +13,7 @@ export default function TaskCard({ task, hari, onToggle, onEdit, onRemove, onTag
     <li className={`card-shadow group rounded-xl border bg-surface-container-lowest p-4 transition hover:bg-surface-container-low ${overdue ? 'border-error/40' : 'border-outline-variant'}`}>
       <div className="flex items-start gap-3.5">
         <button type="button" onClick={() => onToggle(task.id)} role="checkbox" aria-checked={task.done} aria-label={`${task.done ? 'Batalkan selesai' : 'Tandai selesai'}: ${task.title}`}
-          className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-md border-[1.5px] transition ${task.done ? 'border-primary bg-primary text-on-primary' : 'border-outline text-transparent hover:border-primary'}`}>
+          className={`relative flex h-6 w-6 shrink-0 items-center justify-center rounded-md border-[1.5px] after:absolute after:-inset-2.5 after:content-[""] transition ${task.done ? 'border-primary bg-primary text-on-primary' : 'border-outline text-transparent hover:border-primary'}`}>
           <Check size={14} strokeWidth={3} aria-hidden="true" />
         </button>
 
@@ -22,26 +22,26 @@ export default function TaskCard({ task, hari, onToggle, onEdit, onRemove, onTag
           {task.notes && !task.done && <p className="mt-0.5 break-words text-sm text-on-surface-variant">{task.notes}</p>}
 
           <div className="mt-2 flex flex-wrap items-center gap-1.5">
-            <span className={`inline-flex items-center gap-1 rounded px-2 py-0.5 text-[11px] font-semibold ${pr.chip}`}>
+            <span className={`inline-flex items-center gap-1 rounded px-2 py-0.5 text-xs font-semibold ${pr.chip}`}>
               <span className={`h-1.5 w-1.5 rounded-full ${pr.dot}`} aria-hidden="true" /> {pr.label}
             </span>
             {task.dueDate && (
-              <span className={`inline-flex items-center gap-1 rounded px-2 py-0.5 text-[11px] font-semibold ${dueChip}`}>
+              <span className={`inline-flex items-center gap-1 rounded px-2 py-0.5 text-xs font-semibold ${dueChip}`}>
                 {overdue ? <AlertCircle size={12} aria-hidden="true" /> : today ? <Clock size={12} aria-hidden="true" /> : <Calendar size={12} aria-hidden="true" />}
                 {labelTenggat(task, hari)}
               </span>
             )}
             {task.tags?.map((t) => (
               <button key={t} type="button" onClick={() => onTagClick?.(t)} aria-label={`Saring label ${t}`}
-                className="inline-flex min-h-6 items-center rounded bg-surface-container px-2 text-[11px] font-semibold text-on-surface-variant transition hover:text-primary">#{t}</button>
+                className="relative inline-flex min-h-6 items-center rounded bg-surface-container px-2 after:absolute after:inset-x-0 after:-inset-y-2.5 after:content-[''] text-xs font-semibold text-on-surface-variant transition hover:text-primary">#{t}</button>
             ))}
           </div>
         </div>
 
         {/* Selalu tampak di layar sentuh; muncul saat hover di layar lebar. */}
         <div className="flex shrink-0 items-center gap-1 transition md:opacity-0 md:focus-within:opacity-100 md:group-hover:opacity-100">
-          <button type="button" onClick={() => onEdit(task)} aria-label={`Ubah: ${task.title}`} className="rounded-md p-1.5 text-on-surface-variant hover:bg-surface-container-high hover:text-primary"><Pencil size={15} /></button>
-          <button type="button" onClick={() => onRemove(task.id)} aria-label={`Hapus: ${task.title}`} className="rounded-md p-1.5 text-on-surface-variant hover:text-error"><Trash2 size={15} /></button>
+          <button type="button" onClick={() => onEdit(task)} aria-label={`Ubah: ${task.title}`} className="grid h-11 w-11 place-items-center rounded-md text-on-surface-variant hover:bg-surface-container-high hover:text-primary"><Pencil size={15} /></button>
+          <button type="button" onClick={() => onRemove(task.id)} aria-label={`Hapus: ${task.title}`} className="grid h-11 w-11 place-items-center rounded-md text-on-surface-variant hover:text-error"><Trash2 size={15} /></button>
         </div>
       </div>
     </li>

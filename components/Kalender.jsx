@@ -39,9 +39,9 @@ export default function Kalender() {
         <div className="mb-3 flex items-center justify-between">
           <h2 id="h-bulan" className="text-lg font-bold capitalize text-on-surface">{new Date(bulan.y, bulan.m, 1).toLocaleDateString('id-ID', { month: 'long', year: 'numeric' })}</h2>
           <div className="flex gap-1">
-            <button type="button" onClick={() => ganti(-1)} aria-label="Bulan sebelumnya" className="rounded-lg p-2 text-on-surface-variant hover:bg-surface-container-high"><ChevronLeft size={18} /></button>
-            <button type="button" onClick={() => { const [y, m] = hari.split('-').map(Number); setBulan({ y, m: m - 1 }); setPilih(hari); }} className="rounded-lg px-3 text-sm font-semibold text-primary hover:bg-surface-container-high">Hari ini</button>
-            <button type="button" onClick={() => ganti(1)} aria-label="Bulan berikutnya" className="rounded-lg p-2 text-on-surface-variant hover:bg-surface-container-high"><ChevronRight size={18} /></button>
+            <button type="button" onClick={() => ganti(-1)} aria-label="Bulan sebelumnya" className="grid h-11 w-11 place-items-center rounded-lg text-on-surface-variant hover:bg-surface-container-high"><ChevronLeft size={18} /></button>
+            <button type="button" onClick={() => { const [y, m] = hari.split('-').map(Number); setBulan({ y, m: m - 1 }); setPilih(hari); }} className="min-h-11 rounded-lg px-3 text-sm font-semibold text-primary hover:bg-surface-container-high">Hari ini</button>
+            <button type="button" onClick={() => ganti(1)} aria-label="Bulan berikutnya" className="grid h-11 w-11 place-items-center rounded-lg text-on-surface-variant hover:bg-surface-container-high"><ChevronRight size={18} /></button>
           </div>
         </div>
         <div className="grid grid-cols-7 gap-1 text-center text-xs font-semibold text-on-surface-variant" aria-hidden="true">

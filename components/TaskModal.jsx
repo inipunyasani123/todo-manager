@@ -74,7 +74,7 @@ export default function TaskModal({ open, task, hari, onClose, onSave }) {
 
         <div className="flex items-center justify-between border-b border-outline-variant/30 px-6 py-4">
           <h2 id="judul-modal" className="text-lg font-semibold text-on-surface">{task ? 'Ubah tugas' : 'Tugas baru'}</h2>
-          <button type="button" onClick={onClose} aria-label="Tutup" className="grid h-10 w-10 place-items-center rounded-full text-on-surface-variant hover:bg-surface-container-low">
+          <button type="button" onClick={onClose} aria-label="Tutup" className="grid h-11 w-11 place-items-center rounded-full text-on-surface-variant hover:bg-surface-container-low">
             <X size={18} aria-hidden="true" />
           </button>
         </div>
@@ -100,7 +100,7 @@ export default function TaskModal({ open, task, hari, onClose, onSave }) {
                     type="button"
                     aria-pressed={active}
                     onClick={() => setForm({ ...form, priority: k })}
-                    className={`flex items-center gap-1.5 rounded-full border px-4 py-2 text-sm font-medium transition ${
+                    className={`flex items-center min-h-11 gap-1.5 rounded-full border px-4 py-2 text-sm font-medium transition ${
                       active ? PILL_ACTIVE[k] : 'border-outline-variant bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-low'
                     }`}
                   >
@@ -120,9 +120,9 @@ export default function TaskModal({ open, task, hari, onClose, onSave }) {
               <div className="mt-2 flex flex-wrap gap-2">
                 {[['Hari ini', 0], ['Besok', 1], ['Pekan depan', 7]].map(([l, n]) => (
                   <button key={l} type="button" onClick={() => setForm({ ...form, dueDate: tambahHari(hari, n) })} aria-pressed={form.dueDate === tambahHari(hari, n)}
-                    className="rounded-full border border-outline-variant px-3 py-1 text-xs font-semibold text-on-surface-variant hover:border-primary hover:text-primary">{l}</button>
+                    className="min-h-11 rounded-full border border-outline-variant px-3 text-sm font-semibold text-on-surface-variant hover:border-primary hover:text-primary">{l}</button>
                 ))}
-                {form.dueDate && <button type="button" onClick={() => setForm({ ...form, dueDate: '' })} className="rounded-full px-3 py-1 text-xs font-semibold text-on-surface-variant hover:text-error">Tanpa tenggat</button>}
+                {form.dueDate && <button type="button" onClick={() => setForm({ ...form, dueDate: '' })} className="min-h-11 rounded-full px-3 text-sm font-semibold text-on-surface-variant hover:text-error">Tanpa tenggat</button>}
               </div>
             )}
           </div>
@@ -134,7 +134,7 @@ export default function TaskModal({ open, task, hari, onClose, onSave }) {
               {form.tags.map((t) => (
                 <span key={t} className="inline-flex items-center gap-1 rounded-md bg-surface-container-high px-2.5 py-1 text-xs font-medium text-on-surface">
                   <Tag size={12} className="text-on-surface-variant" aria-hidden="true" /> {t}
-                  <button type="button" onClick={() => removeTag(t)} aria-label={`Hapus label ${t}`} className="-my-1 -mr-1.5 ml-0.5 grid h-6 w-6 place-items-center rounded text-on-surface-variant hover:text-error">
+                  <button type="button" onClick={() => removeTag(t)} aria-label={`Hapus label ${t}`} className="-my-2 -mr-2 ml-0.5 grid h-11 w-11 place-items-center rounded text-on-surface-variant hover:text-error">
                     <X size={12} aria-hidden="true" />
                   </button>
                 </span>
@@ -152,8 +152,8 @@ export default function TaskModal({ open, task, hari, onClose, onSave }) {
         </form>
 
         <footer className="flex justify-end gap-3 border-t border-outline-variant/30 bg-surface p-4">
-          <button type="button" onClick={onClose} className="rounded-lg px-5 py-2.5 text-sm font-semibold text-primary transition hover:bg-surface-container-low">Batal</button>
-          <button type="submit" form="form-tugas" className="flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-on-primary shadow-sm transition hover:brightness-110">
+          <button type="button" onClick={onClose} className="min-h-11 rounded-lg px-5 py-2.5 text-sm font-semibold text-primary transition hover:bg-surface-container-low">Batal</button>
+          <button type="submit" form="form-tugas" className="flex min-h-11 items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-semibold text-on-primary shadow-sm transition hover:brightness-110">
             <Save size={16} aria-hidden="true" /> Simpan
           </button>
         </footer>
